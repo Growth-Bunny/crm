@@ -1,0 +1,251 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<section class="content-header">
+    <div class="header-icon">
+        <i class="fa fa-warning"></i>
+    </div>
+    <div class="header-title">
+        <h1>Notifications </h1>
+        <small>Notification and custom alerts</small>
+    </div>
+</section>
+<!-- Main content -->
+<section class="content">
+    {% comment %} <div class="notification-shape shape-box" id="notification-shape" data-path-to="m 0,0 500,0 0,500 -500,0 z">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 500 500" preserveAspectRatio="none">
+         <path d="m 0,0 500,0 0,500 0,-500 z"/>
+      </svg>
+    </div>
+    <div class="notification-shape shape-progress" id="notification-shape2">
+        <svg width="70px" height="70px">
+         <path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/>
+      </svg>
+    </div> {% endcomment %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4>Notification Styles Inspiration</h4>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <header class="codrops-header">
+                                <h1>Notification Styles Inspiration <span>Simple ideas &amp; effects for website notifications</span></h1>
+                            </header>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Examples </th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>.... Notification Styles "Scale"....</td>
+                                        <td><button id="scale" class="btn btn-violet btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jelly</td>
+                                        <td><button id="jelly" class="btn btn-info btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Slide in</td>
+                                        <td><button id="slideIn" class="btn btn-primary btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Genie</td>
+                                        <td><button id="genie" class="btn btn-purple btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Flip</td>
+                                        <td><button id="flip" class="btn btn-inverse btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bouncy Flip</td>
+                                        <td><button id="bouncyFlip" class="btn btn-default btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-6">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Examples </th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Slide On Top</td>
+                                        <td><button id="slidetop" class="btn btn-black btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Expanding Loader</td>
+                                        <td><button id="exploader" class="btn btn-default btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Corner Expand</td>
+                                        <td><button id="cornerExpand" class="btn btn-success btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Loading Circle</td>
+                                        <td><button id="loadingcircle" class="btn btn-pink btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Box Spinner</td>
+                                        <td><button id="boxspinner" class="btn btn-warning btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Thumb Slider</td>
+                                        <td><button id="thumbslider" class="btn btn-danger btn-sm progress-button pull-right">
+                                 <span class="">Run example</span>
+                                 </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-bd">
+                <div class="panel-body">
+                    <p>Sweet Alert is a beautiful replacement for standard Javascript's "Alert". </p>
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Examples</th>
+                                <th> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> A basic message </td>
+                                <td><button class="btn btn-primary btn-sm demo1 pull-right">Run example</button></td>
+                            </tr>
+                            <tr>
+                                <td>A success message!</td>
+                                <td><button class="btn btn-success btn-sm demo2 pull-right">Run example</button></td>
+                            </tr>
+                            <tr>
+                                <td>A warning message, with a function attached to the "Confirm"-button</td>
+                                <td><button class="btn btn-warning btn-sm demo3 pull-right">Run example</button></td>
+                            </tr>
+                            <tr>
+                                <td>... and by passing a parameter, you can execute something else for "Cancel".</td>
+                                <td><button class="btn btn-danger btn-sm demo4 pull-right">Run example</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <p>You can easy add sweet alert in your controller by adding code like this:</p>
+                        <pre>
+            swal({
+            title: <span class="str">'Are you sure?'</span>,
+            text: <span class="str">"You won't be able to revert this!"</span>,
+            type: <span class="str">'warning'</span>,
+            showCancelButton: <span class="val">true</span>,
+            confirmButtonColor: <span class="str">'#3085d6'</span>,
+            cancelButtonColor: <span class="str">'#d33'</span>,
+            confirmButtonText: <span class="str">'Yes, delete it!'</span>,
+            cancelButtonText: <span class="str">'No, cancel!'</span>,
+            confirmButtonClass: <span class="str">'btn btn-success'</span>,
+            cancelButtonClass: <span class="str">'btn btn-danger'</span>,
+            buttonsStyling: <span class="val">false</span>
+        })
+    </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-bd">
+                <div class="panel-body">
+                    <p class="m-b-20">Minimalistic and extensible notification service for toastr.</p>
+                    <div class="text-center">
+                        <h4>Example with toastr</h4>
+                        <button class="toastr1 btn btn-info btn-sm m-r-5 m-b-5">Run example</button>
+                        <button class="toastr2 btn btn-success btn-sm m-r-5 m-b-5">Run example</button>
+                        <button class="toastr3 btn btn-warning btn-sm m-r-5 m-b-5">Run example</button>
+                        <button class="toastr4 btn btn-danger btn-sm m-r-5 m-b-5">Run example</button>
+                    </div>
+                    <br>
+                    <div>
+                        <p>
+                            You can easy add any notification in your scripts by adding code like this:
+                        </p>
+                        <pre>
+        Command: toastr["success"]("Example message ", "Example title")
+
+        toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    } </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

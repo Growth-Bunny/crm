@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>CRM Admin panel</title>
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="{% static 'assets/dist/img/ico/favicon.png' %}" type="image/x-icon">
+    <!-- Bootstrap -->
+    <link href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap rtl -->
+    <!--<link href="assets/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" type="text/css"/>-->
+    <!-- Pe-icon-7-stroke -->
+    <link href="{% static 'assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css' %}" rel="stylesheet" type="text/css" />
+    <!-- style css -->
+    <link href="{% static 'assets/dist/css/stylecrm.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Theme style rtl -->
+    <!--<link href="assets/dist/css/stylecrm-rtl.css" rel="stylesheet" type="text/css"/>-->
+</head>
+
+<body>
+    <!-- Content Wrapper -->
+    <div class="login-wrapper">
+        <div class="back-link">
+            {% comment %} <a href="index.html" class="btn btn-add">Back to Dashboard</a> {% endcomment %}
+        </div>
+        <div class="container-center lg">
+            <div class="login-area">
+                <div class="panel panel-bd panel-custom">
+                    <div class="panel-heading">
+                        <div class="view-header">
+                            <div class="header-icon">
+                                <i class="pe-7s-unlock"></i>
+                            </div>
+                            <div class="header-title">
+                                <h3>Register</h3>
+                                <small><strong>Please enter your data to register.</strong></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form  id="loginForm" method="POST">
+                            {% if messages %}
+                            {% for message in messages %}
+                            <p {% if message.tags %}class="alert alert-{{message.tags}} mb-5"{% endif %}>{{message}}</p>
+                            {% endfor %}
+                            {% endif %}
+                            {% csrf_token %}
+                            <div class="row">
+                                {% for fm in form %}
+                                <div class="form-group col-lg-6">
+                                    {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+                                   
+                                </div>
+                                {% endfor %}
+                                
+                               
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-warning">Register</button>
+                                {% comment %} <a class="btn btn-add" href="{% url 'login' %}">Login</a> {% endcomment %}
+                            </div>
+                            <center>
+                            <div class="text-center text-primary fw-bold"><small>Existing User ? <a href="{% url 'login' %}"
+                                class="text-danger">Login Now</a> </small></div>
+                             {% if form.non_field_errors %}
+                             {% for error in form.non_field_errors %}
+                             <p class="alert alert-danger my-3">{{error}}</p>
+                             {% endfor %}
+                             {% endif %}
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- jQuery -->
+    <script src="{% static 'assets/plugins/jQuery/jquery-1.12.4.min.js' %}" type="text/javascript"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
+</body>
+
+</html>

@@ -1,0 +1,356 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="header-icon">
+        <i class="fa fa-users"></i>
+    </div>
+    <div class="header-title">
+        <h1>Leads</h1>
+        <small>List of Leads</small>
+    </div>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                    <div class="btn-group" id="buttonexport">
+                        <a href="">
+                            <h4>List Leads</h4>
+                        </a>
+                    </div>
+                </div>
+                {% if messages %}
+                {% for message in messages %}
+                <p {% if message.tags %}class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                <div class="panel-body">
+                    <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
+                    <div class="btn-group">
+                        <div class="buttonexport" id="buttonlist">
+                            {% comment %} <a class="btn btn-add" href=""> <i class="fa fa-plus"></i> Add Customer
+                            </a> {% endcomment %}
+                            <button type="button" class="btn btn-add" data-toggle="modal" data-target="#exampleModal"
+                                data-whatever="@mdo"><i class="fa fa-plus">Add Lead</i></button>
+                            <button type="button" class="btn btn-add" data-toggle="modal" data-target="#exampleModal2"
+                                data-whatever="@mdo"><i class="fa fa-bars"> Import CSV DATA</i></button>
+                        </div>
+                        <button class="btn btn-exp btn-sm dropdown-toggle" data-toggle="dropdown"><i
+                                class="fa fa-bars"></i> Export Table Data</button>
+                        <ul class="dropdown-menu exp-drop" role="menu">
+                            <li>
+                                <a href="#"
+                                    onclick="$('#dataTableExample1').tableExport({type:'json',escape:'false'});">
+                                    <img src="assets/dist/img/json.png" width="24" alt="logo"> JSON</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    onclick="$('#dataTableExample1').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});">
+                                    <img src="assets/dist/img/json.png" width="24" alt="logo"> JSON (ignoreColumn)</a>
+                            </li>
+                            <li><a href="#" onclick="$('#dataTableExample1').tableExport({type:'json',escape:'true'});">
+                                    <img src="assets/dist/img/json.png" width="24" alt="logo"> JSON (with Escape)</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#" onclick="$('#dataTableExample1').tableExport({type:'xml',escape:'false'});">
+                                    <img src="assets/dist/img/xml.png" width="24" alt="logo"> XML</a>
+                            </li>
+                            <li><a href="#" onclick="$('#dataTableExample1').tableExport({type:'sql'});">
+                                    <img src="assets/dist/img/sql.png" width="24" alt="logo"> SQL</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#" onclick="$('#dataTableExample1').tableExport({type:'csv',escape:'false'});">
+                                    <img src="assets/dist/img/csv.png" width="24" alt="logo"> CSV</a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="$('#dataTableExample1').tableExport({type:'txt',escape:'false'});">
+                                    <img src="assets/dist/img/txt.png" width="24" alt="logo"> TXT</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#"
+                                    onclick="$('#dataTableExample1').tableExport({type:'excel',escape:'false'});">
+                                    <img src="assets/dist/img/xls.png" width="24" alt="logo"> XLS</a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="$('#dataTableExample1').tableExport({type:'doc',escape:'false'});">
+                                    <img src="assets/dist/img/word.png" width="24" alt="logo"> Word</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    onclick="$('#dataTableExample1').tableExport({type:'powerpoint',escape:'false'});">
+                                    <img src="assets/dist/img/ppt.png" width="24" alt="logo"> PowerPoint</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#" onclick="$('#dataTableExample1').tableExport({type:'png',escape:'false'});">
+                                    <img src="assets/dist/img/png.png" width="24" alt="logo"> PNG</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    onclick="$('#dataTableExample1').tableExport({type:'pdf',pdfFontSize:'7',escape:'false'});">
+                                    <img src="assets/dist/img/pdf.png" width="24" alt="logo"> PDF</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    {% include 'base/messages.html' %}
+                    <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
+                    <div class="table-responsive">
+                        <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr class="info">
+                                    <th>#No</th>
+                                    <th>Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>Destination</th>
+                                    <th>No of Days</th>
+                                    <th>No of People</th>
+                                    <th>Date</th>
+                                    <th>city</th>
+                                    <th>Assign</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in lead %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    
+                                    <td>{{i.name}}</td>
+                                    <td>{{i.phone}}</td>
+                                    <td>{{i.email}}</td>
+                                    <td>{{i.destination}}</td>
+                                    <td>{{i.no_of_days}}</td>
+                                    <td>{{i.number_of_people}}</td>
+                                    <td>{{i.date}}</td>
+                                    <td>{{i.city}}</td>
+                                    <td><span class="label-custom label label-default">{{i.assign}}</span></td>
+                                     <td>
+                                        <a href="#ediLead{{i.id}}" class="btn btn-add btn-sm" data-toggle="modal" ><i class="fa fa-pencil"></i></a>
+                                        {% comment %} <a href="#editLeadModal-{{forloop.counter}}" data-toggle="modal" data-target="#editLeadModal">edit</a> {% endcomment %}
+                                        {% comment %} <button type="button" class="btn btn-add btn-sm" data-toggle="modal"
+                                            data-target="#customer1"><i class="fa fa-pencil"></i></button> {% endcomment %}
+                                        {% comment %} <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                            data-target="#customer2"><i class="fa fa-trash-o"></i> </button> {% endcomment %}
+                                        <a href="#customer2{{i.id}}" class="btn btn-danger btn-sm" data-toggle="modal" ><i class="fa fa-trash-o"></i></a>
+                                    </td> 
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- customer Modal1 -->
+   {% for i in lead %}
+    <div class="modal fade" id="ediLead{{i.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3><i class="fa fa-user m-r-5"></i> Update Customer</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="{% url 'update_lead' %}" class="form-horizontal" method="POST">
+                                {% csrf_token %}
+                                <fieldset>
+                                    <!-- Text input-->
+                                    
+                                    <div class="col-md-4 form-group">
+                                        <label class="control-label">Customer Name:</label>
+                                        <input type="text" placeholder="{{i.name}}" class="form-control" value="{{i.name}}" name="name" >
+                                        <input type="hidden" placeholder="{{i.id}}" class="form-control" name="lead_id" value="{{i.id}}" >
+                                    </div>
+                                    
+                                    <!-- Text input-->
+                                    <div class="col-md-4 form-group">
+                                        <label class="control-label">Email:</label>
+                                        <input type="email" placeholder="{{i.email}}" class="form-control" name="email" value="{{i.email}}">
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="col-md-4 form-group">
+                                        <label class="control-label">Mobile</label>
+                                        <input type="number" placeholder="{{i.phone}}" class="form-control" name="mobile" value="{{i.phone}}">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label class="control-label">Destination</label>
+                                        <input type="text" placeholder="{{i.destination}}" class="form-control" name="destination" value="{{i.destination}}">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label class="control-label">Number Of Days</label>
+                                        <input type="number" placeholder="{{i.no_of_days}}" class="form-control" name="no_of_days" value="{{i.no_of_days}}">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label class="control-label">Number of People</label>
+                                        <input type="number" placeholder="{{i.number_of_people}}" class="form-control" name="no_of_people" value="{{i.number_of_people}}">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label class="control-label">Date</label>
+                                        <input type="number" placeholder="{{i.date}}" class="form-control">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label class="control-label">City</label>
+                                        <input type="text"  placeholder="{{i.city}}" class="form-control" name="city_nw" value="city_nw">
+                                    </div>
+                                    
+
+                                    <div class="col-md-4 form-group">
+                                        <label class="control-label">Assign</label>
+                                        {% comment %} <input type="number" placeholder="{{i.assign}}" class="form-control"> {% endcomment %}
+                                        <select name="assign" id="" class="form-control">
+                                            {% for i in profile %}
+                                            <option value={{i.id}} >{{i.user}}</option>
+                                            {% endfor %}
+                                        </select>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="col-md-12 form-group user-form-group">
+                                        <div class="pull-right">
+                                            {% comment %} <button type="button" class="btn btn-danger btn-sm">Cancel</button> {% endcomment %}
+                                            <button type="submit" class="btn btn-add btn-sm">Save</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    {% endfor %}
+    
+    <!-- /.modal -->
+    <!-- Modal -->
+    <!-- Customer Modal2 -->
+    {% for i in lead %}
+    <div class="modal fade" id="customer2{{i.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3><i class="fa fa-user m-r-5"></i> Delete Customer{{i.name}}</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <div class="col-md-12 form-group user-form-group">
+                                        <label class="control-label">Delete Customer</label>
+                                        <div class="pull-right">
+                                            <button type="button" class="btn btn-danger btn-sm">NO</button>
+                                            <button type="submit" class="btn btn-add btn-sm">YES</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    {% endfor %}
+    <!-- /.modal -->
+</section>
+<!-- /.content -->
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <form class="col-sm-12" method="POST">
+
+                    {% csrf_token %}
+                    <div class="row">
+                        {% for fm in form %}
+                        <div class="form-group col-lg-6">
+                            {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% comment %} ----------------------------- modal import csv data ---------------------- {% endcomment %}
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <form action="{% url 'upload_csv' %}" class="col-sm-12" method="POST" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                    <label for="file1"> Upload a file</label>
+                    <input type="file" id="file1" name="file">
+                    <small>Only accepts CSV files</small>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
